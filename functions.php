@@ -43,6 +43,7 @@ function moderna_setup() {
 	add_theme_support( 'post-thumbnails' );
 
 	// This theme uses wp_nav_menu() in one location.
+//	TODO: доработать меню, включить больше опций
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary', 'moderna' ),
 	) );
@@ -87,6 +88,7 @@ add_action( 'after_setup_theme', 'moderna_setup' );
  *
  * @global int $content_width
  */
+//TODO: непонятно откуда задаются размеры контента
 function moderna_content_width() {
 	$GLOBALS['content_width'] = apply_filters( 'moderna_content_width', 640 );
 }
@@ -114,15 +116,35 @@ add_action( 'widgets_init', 'moderna_widgets_init' );
  * Enqueue scripts and styles.
  */
 function moderna_scripts() {
-	wp_enqueue_style( 'moderna-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'bootstrap-style', get_template_directory_uri().'/css/bootstrap.min.css' );
+	wp_enqueue_style( 'fancybox-style', get_template_directory_uri().'/css/fancybox/jquery.fancybox.css' );
+	wp_enqueue_style( 'carousel-style', get_template_directory_uri().'/css/jcarousel.css' );
+	wp_enqueue_style( 'slider-style', get_template_directory_uri().'/css/flexslider.css' );
+	wp_enqueue_style( 'moderna-style', get_template_directory_uri().'/css/style.css' );
 
-	wp_enqueue_script( 'moderna-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
+	//Theme skin
+	wp_enqueue_style( 'skins-style', get_template_directory_uri().'/skins/default.css' );
 
-	wp_enqueue_script( 'moderna-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+	wp_enqueue_script( 'jquery', get_template_directory_uri() . '/js/jquery.js', array(), '20150115', true );
+	wp_enqueue_script( 'jquery.easing', get_template_directory_uri() . '/js/jquery.easing.1.3.js', array(), '20150115', true );
+	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '20150115', true );
+	wp_enqueue_script( 'fancybox.pack', get_template_directory_uri() . '/js/jquery.fancybox.pack.js', array(), '20150115', true );
+	wp_enqueue_script( 'fancybox-media', get_template_directory_uri() . '/js/jquery.fancybox-media.js', array(), '20150115', true );
+	wp_enqueue_script( 'prettify', get_template_directory_uri() . '/js/google-code-prettify/prettify.js', array(), '20150115', true );
+	wp_enqueue_script( 'quicksand', get_template_directory_uri() . '/js/portfolio/jquery.quicksand.js', array(), '20150115', true );
+	wp_enqueue_script( 'setting', get_template_directory_uri() . '/js/portfolio/setting.js', array(), '20150115', true );
+	wp_enqueue_script( 'slider', get_template_directory_uri() . '/js/jquery.flexslider.js', array(), '20150115', true );
+	wp_enqueue_script( 'animate', get_template_directory_uri() . '/js/animate.js', array(), '20150115', true );
+	wp_enqueue_script( 'custom', get_template_directory_uri() . '/js/custom.js', array(), '20150115', true );
+
+
+
+
+
+	/*if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
-	}
+	}*/
 }
 add_action( 'wp_enqueue_scripts', 'moderna_scripts' );
 
@@ -139,14 +161,17 @@ require get_template_directory() . '/inc/template-tags.php';
 /**
  * Custom functions that act independently of the theme templates.
  */
-require get_template_directory() . '/inc/extras.php';
+//т.к. мы убрали из body классы, то данный файл не нужен
+//require get_template_directory() . '/inc/extras.php';
 
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/inc/customizer.php';
+//не совсем понятен следующий файл - поддержка postMessage что за хрен?
+//require get_template_directory() . '/inc/customizer.php';
 
 /**
  * Load Jetpack compatibility file.
  */
-require get_template_directory() . '/inc/jetpack.php';
+//для статистики
+//require get_template_directory() . '/inc/jetpack.php';
