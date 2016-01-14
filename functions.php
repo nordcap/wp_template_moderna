@@ -94,6 +94,14 @@ function moderna_content_width() {
 }
 add_action( 'after_setup_theme', 'moderna_content_width', 0 );
 
+
+/**
+ * Регистрация нового типа - портфолио
+ */
+
+//TODO: Регистрация нового типа записи - портфолио
+
+
 /**
  * Register widget area.
  *
