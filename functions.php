@@ -141,7 +141,7 @@ function new_type_plus()
 		'query_var'           => true,
 		'show_in_nav_menus'   => true,
 	);
-	register_post_type('plus', $args);
+	register_post_type('post_plus', $args);
 }
 
 
