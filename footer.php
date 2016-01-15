@@ -20,21 +20,14 @@
 
 			</div>
 			<div class="col-lg-3">
-				<!--				TODO: здесь будет размещен виджет Footer_B-->
 
 				<?php get_sidebar('pages')?>
 
 			</div>
 			<div class="col-lg-3">
 				<!--				TODO: здесь будет размещен виджет Footer_C-->
-				<div class="widget">
-					<h5 class="widgetheading">Latest posts</h5>
-					<ul class="link-list">
-						<li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-						<li><a href="#">Pellentesque et pulvinar enim. Quisque at tempor ligula</a></li>
-						<li><a href="#">Natus error sit voluptatem accusantium doloremque</a></li>
-					</ul>
-				</div>
+				<?php get_sidebar('latestpages')?>
+
 			</div>
 			<div class="col-lg-3">
 				<!--				TODO: здесь будет размещен виджет Footer_D-->

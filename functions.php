@@ -226,6 +226,18 @@ function moderna_widgets_init() {
 		'after_title'   => '</h5>',
 
 	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__('Sidebar LatestPages','moderna'),
+		'id'            => "footer-sidebar-latest",
+		'description'   => 'В пустом виджете по умолчанию размещаются последние посты.',
+		'before_widget' => '<div class="widget">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h5 class="widgetheading">',
+		'after_title'   => '</h5>',
+
+	) );
+
 }
 
 add_action( 'widgets_init', 'moderna_widgets_init' );
