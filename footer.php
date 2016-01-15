@@ -42,13 +42,14 @@
 					<?php get_sidebar('copyright')?>
 				</div>
 				<div class="col-lg-6">
-<!--					TODO: Придумать как лучше выводить в админке (как нижнее меню, виджет или Custom Type)-->
 					<ul class="social-network">
-						<li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-						<li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-						<li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus"></i></a></li>
+						<?php
+						$query = new WP_Query(array('post_type'=>'post_contacts', 'order'=>'ASC'));
+						if ( $query->have_posts() ) :
+						while ($query->have_posts()) : $query->the_post(); ?>
+							<li><a href="<?php the_field('link');?>" data-placement="<?php the_field('data-placement');?>" title="<?php the_field('title');?>"><i class="fa fa-<?php the_field('name_social');?>"></i></a></li>
+
+						<? endwhile; endif; wp_reset_postdata(); ?>
 					</ul>
 				</div>
 			</div>
@@ -57,9 +58,6 @@
 </footer>
 </div>
 <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
-<!-- javascript
-    ================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
 
 
 <?php wp_footer(); ?>

@@ -96,15 +96,60 @@ add_action( 'after_setup_theme', 'moderna_content_width', 0 );
 
 
 /**
+ * Регистрация нового типа - преимущества
+ */
+function new_type_plus()
+{
+	$args = array(
+		//'label'  => null,
+		'labels' => array(
+			'name'               => 'Преимущества', // основное название для типа записи
+			'singular_name'      => 'Преимущество', // название для одной записи этого типа
+			'all_items' 	     => 'Все преимущества', //названия для всех записей этого вида
+			'add_new'            => 'Добавить преимущество', // для добавления новой записи
+			'add_new_item'       => 'Добавить новое преимущество', // заголовка у вновь создаваемой записи в админ-панели.
+			'edit_item'          => 'Редактировать преимущество', // для редактирования типа записи
+			'new_item'           => 'Новое преимущество', // текст новой записи
+			'view_item'          => 'Просмотр преимуществ', // для просмотра записи этого типа.
+			'search_items'       => 'Искать преимущества', // для поиска по этим типам записи
+			'not_found'          => 'Преимуществ не найдено', // если в результате поиска ничего не было найдено
+			'not_found_in_trash' => '', // если не было найдено в корзине
+			'parent_item_colon'  => '', // для родительских типов. для древовидных типов
+			'menu_name'          => 'Преимущества', // название меню
+		),
+		'description'         => 'Преимущества использования',
+		'public'              => true,
+		'publicly_queryable'  => true,
+		'exclude_from_search' => null,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'menu_position'       => 4,
+		'menu_icon'           => 'dashicons-awards',
+		//'capability_type'   => 'post',
+		//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+		//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+		'hierarchical'        => false,
+		'supports'            => array('title','excerpt'),
+		'taxonomies'          => array(),
+		'has_archive'         => false,
+		'rewrite'             => true,
+		'query_var'           => true,
+		'show_in_nav_menus'   => true,
+	);
+	register_post_type('post_plus', $args);
+}
+add_action('init','new_type_plus');
+
+
+
+/**
  * Регистрация нового типа - портфолио
  */
-
-
 
 function new_type_portfolio()
 {
 	$args = array(
-		'label'  => null,
+		//'label'  => null,
 		'labels' => array(
 			'name'               => 'Портфолио', // основное название для типа записи
 			'singular_name'      => 'Работа', // название для одной записи этого типа
@@ -126,7 +171,7 @@ function new_type_portfolio()
 		'exclude_from_search' => null,
 		'show_ui'             => true,
 		'show_in_menu'        => true,
-		'menu_position'       => 7,
+		'menu_position'       => 5,
 		'menu_icon'           => 'dashicons-desktop',
 		//'capability_type'   => 'post',
 		//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
@@ -146,47 +191,51 @@ add_action('init','new_type_portfolio');
 
 
 
-function new_type_plus()
+/**
+ * Регистрация нового типа - контакты
+ */
+
+function new_type_contacts()
 {
 	$args = array(
-		'label'  => null,
+		//'label'  => null,
 		'labels' => array(
-			'name'               => 'Преимущества', // основное название для типа записи
-			'singular_name'      => 'Преимущество', // название для одной записи этого типа
-			'all_items' 	     => 'Все преимущества', //названия для всех записей этого вида
-			'add_new'            => 'Добавить преимущество', // для добавления новой записи
-			'add_new_item'       => 'Добавить новое преимущество', // заголовка у вновь создаваемой записи в админ-панели.
-			'edit_item'          => 'Редактировать преимущество', // для редактирования типа записи
-			'new_item'           => 'Новое преимущество', // текст новой записи
-			'view_item'          => 'Просмотр преимуществ', // для просмотра записи этого типа.
-			'search_items'       => 'Искать преимущества', // для поиска по этим типам записи
-			'not_found'          => 'Преимуществ не найдено', // если в результате поиска ничего не было найдено
+			'name'               => 'Контакты', // основное название для типа записи
+			'singular_name'      => 'Контакт', // название для одной записи этого типа
+			'all_items' 	     => 'Все контакты', //названия для всех записей этого вида
+			'add_new'            => 'Добавить контакт', // для добавления новой записи
+			'add_new_item'       => 'Добавить новый контакт', // заголовка у вновь создаваемой записи в админ-панели.
+			'edit_item'          => 'Редактировать контакт', // для редактирования типа записи
+			'new_item'           => 'Новый контакт', // текст новой записи
+			'view_item'          => 'Просмотр контакта', // для просмотра записи этого типа.
+			'search_items'       => 'Искать контакт', // для поиска по этим типам записи
+			'not_found'          => 'Контактов не найдено', // если в результате поиска ничего не было найдено
 			'not_found_in_trash' => '', // если не было найдено в корзине
 			'parent_item_colon'  => '', // для родительских типов. для древовидных типов
-			'menu_name'          => 'Преимущества', // название меню
+			'menu_name'          => 'Контакты', // название меню
 		),
-		'description'         => 'Преимущества использования',
+		'description'         => 'Мои Контакты',
 		'public'              => true,
 		'publicly_queryable'  => null,
 		'exclude_from_search' => null,
 		'show_ui'             => true,
 		'show_in_menu'        => true,
-		'menu_position'       => 5,
-		'menu_icon'           => 'dashicons-awards',
+		'menu_position'       => 6,
+		'menu_icon'           => 'dashicons-twitter',
 		//'capability_type'   => 'post',
 		//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
 		//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
 		'hierarchical'        => false,
-		'supports'            => array('title','excerpt'),
+		'supports'            => array('title'),
 		'taxonomies'          => array(),
 		'has_archive'         => false,
 		'rewrite'             => true,
 		'query_var'           => true,
 		'show_in_nav_menus'   => true,
 	);
-	register_post_type('post_plus', $args);
+	register_post_type('post_contacts', $args);
 }
-add_action('init','new_type_plus');
+add_action('init','new_type_contacts');
 
 
 /**

@@ -58,7 +58,8 @@
             <div class="col-lg-12">
                 <div class="big-cta">
                     <div class="cta-text">
-                        <h2><span>Moderna</span> HTML Business Template</h2>
+<!--                        <h2><span>Moderna</span>HTML Business Template</h2>-->
+                        <h2><span><?php esc_html_e('Moderna', 'moderna'); ?></span> <?php esc_html_e(' HTML Business Template','moderna');?></h2>
                     </div>
                 </div>
             </div>
@@ -74,7 +75,7 @@
 
                     <?php
 
-                    $query = new WP_Query(array('post_type' => 'post_plus'));
+                    $query = new WP_Query(array('post_type' => 'post_plus', 'order'=>'ASC'));
                     if ($query->have_posts()) :
                         while ($query->have_posts()) : $query->the_post(); ?>
 
@@ -93,7 +94,7 @@
 
                                     </div>
                                     <div class="box-bottom">
-                                        <!--                                        TODO: очевидно что ссылка будет вести на другую страницу или всплывающее окно. Но конкретно сказать трудно.-->
+                                        <!-- TODO: очевидно что ссылка будет вести на другую страницу или всплывающее окно. Но конкретно сказать трудно.-->
                                         <a href="<?php echo esc_url(home_url('/')); ?>"><?php esc_html_e('Learn more', 'moderna') ?></a>
                                     </div>
                                 </div>
@@ -123,7 +124,7 @@
 
 
                             <?php
-                            $query = new WP_Query(array('post_type' => 'post_portfolio', 'posts_per_page'=>4));
+                            $query = new WP_Query(array('post_type' => 'post_portfolio',  'posts_per_page'=>4));
                             if ($query->have_posts()) :
                                 while ($query->have_posts()) : $query->the_post(); ?>
                                     <!-- TODO: Ошибка! При изменении ACF полей (id у select), данные связанные с ними не обновляются. -->
@@ -149,68 +150,6 @@
                                 <? endwhile; endif;
                             wp_reset_postdata(); ?>
 
-                            <?php
-                            /*
-
-                                                        <!-- Item Project and Filter Name -->
-                                                        <li class=" item-thumbs col-lg-3 design" data-id="id-0" data-type="web">
-
-                                                                <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                                                                <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 1"
-                                                                   href="<?php echo get_template_directory_uri() ?>/img/works/1.jpg">
-                                                                    <span class="overlay-img"></span>
-                                                                    <span class="overlay-img-thumb font-icon-plus"></span>
-                                                                </a>
-                                                                <!-- Thumb Image and Description -->
-                                                                <img src="<?php echo get_template_directory_uri() ?>/img/works/1.jpg"
-                                                                     alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-
-                                                        </li>
-                                                        <!-- End Item Project -->
-                                                        <!-- Item Project and Filter Name -->
-                                                        <li class="item-thumbs col-lg-3 design" data-id="id-1" data-type="icon">
-                                                            <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                                                            <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 2"
-                                                               href="<?php echo get_template_directory_uri() ?>/img/works/2.jpg">
-                                                                <span class="overlay-img"></span>
-                                                                <span class="overlay-img-thumb font-icon-plus"></span>
-                                                            </a>
-                                                            <!-- Thumb Image and Description -->
-                                                            <img src="<?php echo get_template_directory_uri() ?>/img/works/2.jpg"
-                                                                 alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-                                                        </li>
-                                                        <!-- End Item Project -->
-                                                        <!-- Item Project and Filter Name -->
-                                                        <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
-                                                            <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                                                            <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 3"
-                                                               href="<?php echo get_template_directory_uri() ?>/img/works/3.jpg">
-                                                                <span class="overlay-img"></span>
-                                                                <span class="overlay-img-thumb font-icon-plus"></span>
-                                                            </a>
-                                                            <!-- Thumb Image and Description -->
-                                                            <img src="<?php echo get_template_directory_uri() ?>/img/works/3.jpg"
-                                                                 alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-                                                        </li>
-                                                        <!-- End Item Project -->
-                                                        <!-- Item Project and Filter Name -->
-                                                        <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
-                                                            <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                                                            <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 4"
-                                                               href="<?php echo get_template_directory_uri() ?>/img/works/4.jpg">
-                                                                <span class="overlay-img"></span>
-                                                                <span class="overlay-img-thumb font-icon-plus"></span>
-                                                            </a>
-                                                            <!-- Thumb Image and Description -->
-                                                            <img src="<?php echo get_template_directory_uri() ?>/img/works/4.jpg"
-                                                                 alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-                                                        </li>
-                                                        <!-- End Item Project -->
-
-
-                            */
-
-                            ?>
                         </ul>
                     </section>
                 </div>
