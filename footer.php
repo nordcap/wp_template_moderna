@@ -15,23 +15,15 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3">
-<!--				TODO: здесь будет размещен виджет Footer_A-->
 
-				<?php get_sidebar('footer-A')?>
+				<?php get_sidebar('address')?>
 
 			</div>
 			<div class="col-lg-3">
 				<!--				TODO: здесь будет размещен виджет Footer_B-->
-				<div class="widget">
-					<h5 class="widgetheading">Pages</h5>
-					<ul class="link-list">
-						<li><a href="#">Press release</a></li>
-						<li><a href="#">Terms and conditions</a></li>
-						<li><a href="#">Privacy policy</a></li>
-						<li><a href="#">Career center</a></li>
-						<li><a href="#">Contact us</a></li>
-					</ul>
-				</div>
+
+				<?php get_sidebar('pages')?>
+
 			</div>
 			<div class="col-lg-3">
 				<!--				TODO: здесь будет размещен виджет Footer_C-->
