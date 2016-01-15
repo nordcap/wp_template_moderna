@@ -29,7 +29,6 @@
 
 			</div>
 			<div class="col-lg-3">
-				<!--				TODO: здесь будет размещен виджет Footer_D-->
 
 				<?php get_sidebar('photo')?>
 
@@ -40,16 +39,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6">
-					<div class="copyright">
-						<p>
-							<span><?php printf(esc_html__('&copy; %1$s 2015 All right reserved. By','moderna'),'Moderna');?> </span><a href="<?php echo esc_url( __('http://bootstraptaste.com','moderna') )?>" target="_blank"><?php esc_html_e('Bootstrap Themes','moderna')?></a>
-						</p>
-						<!--
-                            All links in the footer should remain intact.
-                            Licenseing information is available at: http://bootstraptaste.com/license/
-                            You can buy this theme without footer links online at: http://bootstraptaste.com/buy/?theme=Moderna
-                        -->
-					</div>
+					<?php get_sidebar('copyright')?>
 				</div>
 				<div class="col-lg-6">
 <!--					TODO: Придумать как лучше выводить в админке (как нижнее меню, виджет или Custom Type)-->

@@ -249,7 +249,16 @@ function moderna_widgets_init() {
 
 	) );
 
+	register_sidebar( array(
+		'name'          => esc_html__('Sidebar Copyright','moderna'),
+		'id'            => "footer-sidebar-copyright",
+		'description'   => 'В пустом виджете по умолчанию выводится copyright',
+		'before_widget' => '<div class="copyright">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h5 class="widgetheading">',
+		'after_title'   => '</h5>',
 
+	) );
 
 }
 
