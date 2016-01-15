@@ -1520,13 +1520,15 @@ footer{
 	color:#f8f8f8;
 }
 
-footer a {
+footer a, footer a:visited {
 	color:#fff;
 }
 
-footer a:hover {
+footer a:hover, footer a:active, footer a:focus {
 	color:#eee;
 }
+
+
 
 footer h1, footer h2, footer h3, footer h4, footer h5, footer h6{
 	color:#fff;
