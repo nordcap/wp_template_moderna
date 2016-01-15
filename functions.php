@@ -265,7 +265,6 @@ add_action( 'widgets_init', 'moderna_widgets_init' );
 function moderna_scripts() {
 	wp_enqueue_style( 'bootstrap-style', get_template_directory_uri().'/css/bootstrap.min.css' );
 	wp_enqueue_style( 'fancybox-style', get_template_directory_uri().'/css/fancybox/jquery.fancybox.css' );
-	wp_enqueue_style( 'carousel-style', get_template_directory_uri().'/css/jcarousel.css' );
 	wp_enqueue_style( 'slider-style', get_template_directory_uri().'/css/flexslider.css' );
 	wp_enqueue_style( 'moderna-style', get_template_directory_uri().'/css/style.css' );
 
