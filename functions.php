@@ -99,14 +99,57 @@ add_action( 'after_setup_theme', 'moderna_content_width', 0 );
  * Регистрация нового типа - портфолио
  */
 
-//TODO: Регистрация нового типа записи - портфолио
 
-add_action('init','new_type_plus');
+
+function new_type_portfolio()
+{
+	$args = array(
+		'label'  => null,
+		'labels' => array(
+			'name'               => 'Портфолио', // основное название для типа записи
+			'singular_name'      => 'Работа', // название для одной записи этого типа
+			'all_items' 	     => 'Все работы', //названия для всех записей этого вида
+			'add_new'            => 'Добавить работу', // для добавления новой записи
+			'add_new_item'       => 'Добавить новую работу', // заголовка у вновь создаваемой записи в админ-панели.
+			'edit_item'          => 'Редактировать работу', // для редактирования типа записи
+			'new_item'           => 'Новая работа', // текст новой записи
+			'view_item'          => 'Просмотр работы', // для просмотра записи этого типа.
+			'search_items'       => 'Искать работу', // для поиска по этим типам записи
+			'not_found'          => 'Работа не найдена', // если в результате поиска ничего не было найдено
+			'not_found_in_trash' => '', // если не было найдено в корзине
+			'parent_item_colon'  => '', // для родительских типов. для древовидных типов
+			'menu_name'          => 'Портфолио', // название меню
+		),
+		'description'         => 'Работы для портфолио',
+		'public'              => true,
+		'publicly_queryable'  => null,
+		'exclude_from_search' => null,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'menu_position'       => 7,
+		'menu_icon'           => 'dashicons-desktop',
+		//'capability_type'   => 'post',
+		//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+		//'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+		'hierarchical'        => false,
+		'supports'            => array('title','excerpt'),
+		'taxonomies'          => array(),
+		'has_archive'         => false,
+		'rewrite'             => true,
+		'query_var'           => true,
+		'show_in_nav_menus'   => true,
+	);
+	register_post_type('post_portfolio', $args);
+}
+add_action('init','new_type_portfolio');
+
+
+
 
 function new_type_plus()
 {
 	$args = array(
-		//'label'  => null,
+		'label'  => null,
 		'labels' => array(
 			'name'               => 'Преимущества', // основное название для типа записи
 			'singular_name'      => 'Преимущество', // название для одной записи этого типа
@@ -122,13 +165,13 @@ function new_type_plus()
 			'parent_item_colon'  => '', // для родительских типов. для древовидных типов
 			'menu_name'          => 'Преимущества', // название меню
 		),
-		'description'         => 'deded',
+		'description'         => 'Преимущества использования',
 		'public'              => true,
 		'publicly_queryable'  => null,
 		'exclude_from_search' => null,
 		'show_ui'             => true,
 		'show_in_menu'        => true,
-		'menu_position'       => 4,
+		'menu_position'       => 5,
 		'menu_icon'           => 'dashicons-awards',
 		//'capability_type'   => 'post',
 		//'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
@@ -143,7 +186,7 @@ function new_type_plus()
 	);
 	register_post_type('post_plus', $args);
 }
-
+add_action('init','new_type_plus');
 
 
 /**

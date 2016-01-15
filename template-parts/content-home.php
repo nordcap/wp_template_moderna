@@ -120,8 +120,8 @@
                     <section id="projects">
                         <ul id="thumbs" class="portfolio">
                             <!-- Item Project and Filter Name -->
-                            <li class="col-lg-3 design" data-id="id-0" data-type="web">
-                                <div class="item-thumbs">
+                            <li class=" item-thumbs col-lg-3 design" data-id="id-0" data-type="web">
+
                                     <!-- Fancybox - Gallery Enabled - Title - Full Image -->
                                     <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 1"
                                        href="<?php echo get_template_directory_uri() ?>/img/works/1.jpg">
@@ -131,7 +131,7 @@
                                     <!-- Thumb Image and Description -->
                                     <img src="<?php echo get_template_directory_uri() ?>/img/works/1.jpg"
                                          alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-                                </div>
+
                             </li>
                             <!-- End Item Project -->
                             <!-- Item Project and Filter Name -->
