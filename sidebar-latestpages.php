@@ -6,7 +6,7 @@
 
 if (!is_active_sidebar('footer-sidebar-latest')):?>
     <div class="widget">
-        <h5 class="widgetheading">Latest posts</h5>
+        <h5 class="widgetheading"><?php esc_html_e('Latest posts','moderna')?></h5>
         <ul class="link-list">
             <?php
             $query = new WP_Query(array('posts_per_page'=>3));

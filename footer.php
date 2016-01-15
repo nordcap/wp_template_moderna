@@ -25,20 +25,14 @@
 
 			</div>
 			<div class="col-lg-3">
-				<!--				TODO: здесь будет размещен виджет Footer_C-->
 				<?php get_sidebar('latestpages')?>
 
 			</div>
 			<div class="col-lg-3">
 				<!--				TODO: здесь будет размещен виджет Footer_D-->
-				<div class="widget">
-					<h5 class="widgetheading">Flickr photostream</h5>
-					<div class="flickr_badge">
-						<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=8&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=34178660@N03"></script>
-					</div>
-					<div class="clear">
-					</div>
-				</div>
+
+				<?php get_sidebar('photo')?>
+
 			</div>
 		</div>
 	</div>

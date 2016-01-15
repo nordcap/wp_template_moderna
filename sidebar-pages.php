@@ -6,7 +6,7 @@
 
 if (!is_active_sidebar('footer-sidebar-pages')):?>
     <div class="widget">
-        <h5 class="widgetheading">Pages</h5>
+        <h5 class="widgetheading"><?php esc_html_e('Pages','moderna')?></h5>
         <ul class="link-list">
             <li><a href="<?php esc_url(home_url('/'));?>">Press release</a></li>
             <li><a href="<?php esc_url(home_url('/'));?>">Terms and conditions</a></li>

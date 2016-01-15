@@ -238,6 +238,19 @@ function moderna_widgets_init() {
 
 	) );
 
+	register_sidebar( array(
+		'name'          => esc_html__('Sidebar Photo','moderna'),
+		'id'            => "footer-sidebar-photo",
+		'description'   => 'В пустом виджете по умолчанию выводятся изображения из www.flickr.com',
+		'before_widget' => '<div class="widget">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h5 class="widgetheading">',
+		'after_title'   => '</h5>',
+
+	) );
+
+
+
 }
 
 add_action( 'widgets_init', 'moderna_widgets_init' );
