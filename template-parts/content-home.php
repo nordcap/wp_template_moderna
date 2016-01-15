@@ -74,7 +74,7 @@
 
                     <?php
 
-                    $query = new WP_Query(array('post_type'=>'post_plus'));
+                    $query = new WP_Query(array('post_type' => 'post_plus'));
                     if ($query->have_posts()) :
                         while ($query->have_posts()) : $query->the_post(); ?>
 
@@ -93,12 +93,13 @@
 
                                     </div>
                                     <div class="box-bottom">
-<!--                                        TODO: очевидно что ссылка будет вести на другую страницу или всплывающее окно. Но конкретно сказать трудно.-->
-                                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e('Learn more','moderna')?></a>
+                                        <!--                                        TODO: очевидно что ссылка будет вести на другую страницу или всплывающее окно. Но конкретно сказать трудно.-->
+                                        <a href="<?php echo esc_url(home_url('/')); ?>"><?php esc_html_e('Learn more', 'moderna') ?></a>
                                     </div>
                                 </div>
                             </div>
-                        <? endwhile; endif; wp_reset_postdata(); ?>
+                        <? endwhile; endif;
+                    wp_reset_postdata(); ?>
 
                 </div>
             </div>
@@ -119,60 +120,97 @@
                 <div class="row">
                     <section id="projects">
                         <ul id="thumbs" class="portfolio">
-                            <!-- Item Project and Filter Name -->
-                            <li class=" item-thumbs col-lg-3 design" data-id="id-0" data-type="web">
 
-                                    <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                                    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 1"
-                                       href="<?php echo get_template_directory_uri() ?>/img/works/1.jpg">
-                                        <span class="overlay-img"></span>
-                                        <span class="overlay-img-thumb font-icon-plus"></span>
-                                    </a>
-                                    <!-- Thumb Image and Description -->
-                                    <img src="<?php echo get_template_directory_uri() ?>/img/works/1.jpg"
-                                         alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
 
-                            </li>
-                            <!-- End Item Project -->
-                            <!-- Item Project and Filter Name -->
-                            <li class="item-thumbs col-lg-3 design" data-id="id-1" data-type="icon">
-                                <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                                <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 2"
-                                   href="<?php echo get_template_directory_uri() ?>/img/works/2.jpg">
-                                    <span class="overlay-img"></span>
-                                    <span class="overlay-img-thumb font-icon-plus"></span>
-                                </a>
-                                <!-- Thumb Image and Description -->
-                                <img src="<?php echo get_template_directory_uri() ?>/img/works/2.jpg"
-                                     alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-                            </li>
-                            <!-- End Item Project -->
-                            <!-- Item Project and Filter Name -->
-                            <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
-                                <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                                <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 3"
-                                   href="<?php echo get_template_directory_uri() ?>/img/works/3.jpg">
-                                    <span class="overlay-img"></span>
-                                    <span class="overlay-img-thumb font-icon-plus"></span>
-                                </a>
-                                <!-- Thumb Image and Description -->
-                                <img src="<?php echo get_template_directory_uri() ?>/img/works/3.jpg"
-                                     alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-                            </li>
-                            <!-- End Item Project -->
-                            <!-- Item Project and Filter Name -->
-                            <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
-                                <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                                <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 4"
-                                   href="<?php echo get_template_directory_uri() ?>/img/works/4.jpg">
-                                    <span class="overlay-img"></span>
-                                    <span class="overlay-img-thumb font-icon-plus"></span>
-                                </a>
-                                <!-- Thumb Image and Description -->
-                                <img src="<?php echo get_template_directory_uri() ?>/img/works/4.jpg"
-                                     alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
-                            </li>
-                            <!-- End Item Project -->
+                            <?php
+                            $query = new WP_Query(array('post_type' => 'post_portfolio', 'posts_per_page'=>4));
+                            if ($query->have_posts()) :
+                                while ($query->have_posts()) : $query->the_post(); ?>
+                                    <!-- TODO: Ошибка! При изменении ACF полей (id у select), данные связанные с ними не обновляются. -->
+                                    <li class=" item-thumbs col-lg-3 <?php the_field('class_list'); ?>"
+                                        data-id="<?php the_field('data-id'); ?>"
+                                        data-type="<?php the_field('data-type'); ?>">
+
+                                        <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                                        <!-- TODO: Касательно картинки - the_field('image') идентично the_field('название поля')-->
+                                        <a class="hover-wrap fancybox" data-fancybox-group="gallery"
+                                           title="<?php the_title(); ?>"
+                                           href="<?php the_field('image'); ?>">
+                                            <span class="overlay-img"></span>
+                                            <span class="overlay-img-thumb font-icon-plus"></span>
+                                        </a>
+                                        <!-- Thumb Image and Description -->
+                                        <img src="<?php the_field('thumbnail'); ?>"
+                                             alt="<?php the_field('description'); ?>">
+
+                                    </li>
+
+
+                                <? endwhile; endif;
+                            wp_reset_postdata(); ?>
+
+                            <?php
+                            /*
+
+                                                        <!-- Item Project and Filter Name -->
+                                                        <li class=" item-thumbs col-lg-3 design" data-id="id-0" data-type="web">
+
+                                                                <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                                                                <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 1"
+                                                                   href="<?php echo get_template_directory_uri() ?>/img/works/1.jpg">
+                                                                    <span class="overlay-img"></span>
+                                                                    <span class="overlay-img-thumb font-icon-plus"></span>
+                                                                </a>
+                                                                <!-- Thumb Image and Description -->
+                                                                <img src="<?php echo get_template_directory_uri() ?>/img/works/1.jpg"
+                                                                     alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+
+                                                        </li>
+                                                        <!-- End Item Project -->
+                                                        <!-- Item Project and Filter Name -->
+                                                        <li class="item-thumbs col-lg-3 design" data-id="id-1" data-type="icon">
+                                                            <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                                                            <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 2"
+                                                               href="<?php echo get_template_directory_uri() ?>/img/works/2.jpg">
+                                                                <span class="overlay-img"></span>
+                                                                <span class="overlay-img-thumb font-icon-plus"></span>
+                                                            </a>
+                                                            <!-- Thumb Image and Description -->
+                                                            <img src="<?php echo get_template_directory_uri() ?>/img/works/2.jpg"
+                                                                 alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                                                        </li>
+                                                        <!-- End Item Project -->
+                                                        <!-- Item Project and Filter Name -->
+                                                        <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
+                                                            <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                                                            <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 3"
+                                                               href="<?php echo get_template_directory_uri() ?>/img/works/3.jpg">
+                                                                <span class="overlay-img"></span>
+                                                                <span class="overlay-img-thumb font-icon-plus"></span>
+                                                            </a>
+                                                            <!-- Thumb Image and Description -->
+                                                            <img src="<?php echo get_template_directory_uri() ?>/img/works/3.jpg"
+                                                                 alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                                                        </li>
+                                                        <!-- End Item Project -->
+                                                        <!-- Item Project and Filter Name -->
+                                                        <li class="item-thumbs col-lg-3 photography" data-id="id-2" data-type="illustrator">
+                                                            <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                                                            <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="Work 4"
+                                                               href="<?php echo get_template_directory_uri() ?>/img/works/4.jpg">
+                                                                <span class="overlay-img"></span>
+                                                                <span class="overlay-img-thumb font-icon-plus"></span>
+                                                            </a>
+                                                            <!-- Thumb Image and Description -->
+                                                            <img src="<?php echo get_template_directory_uri() ?>/img/works/4.jpg"
+                                                                 alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis elementum odio. Curabitur pellentesque, dolor vel pharetra mollis.">
+                                                        </li>
+                                                        <!-- End Item Project -->
+
+
+                            */
+
+                            ?>
                         </ul>
                     </section>
                 </div>
