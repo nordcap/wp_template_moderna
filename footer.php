@@ -16,17 +16,9 @@
 		<div class="row">
 			<div class="col-lg-3">
 <!--				TODO: здесь будет размещен виджет Footer_A-->
-				<div class="widget">
-					<h5 class="widgetheading">Get in touch with us</h5>
-					<address>
-						<strong>Moderna company Inc</strong><br>
-						Modernbuilding suite V124, AB 01<br>
-						Someplace 16425 Earth </address>
-					<p>
-						<i class="icon-phone"></i> (123) 456-7890 - (123) 555-7891 <br>
-						<i class="icon-envelope-alt"></i> email@domainname.com
-					</p>
-				</div>
+
+				<?php get_sidebar('footer-A')?>
+
 			</div>
 			<div class="col-lg-3">
 				<!--				TODO: здесь будет размещен виджет Footer_B-->

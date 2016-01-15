@@ -204,8 +204,26 @@ function moderna_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+//	TODO: обнаружен любопытный баг. Если id виджета будет вида "Название-Буква" то виджет обнуляется при перезагрузке страницы.
+	register_sidebar( array(
+		'name'          => esc_html__('Sidebar Address','moderna'),
+		'id'            => "footer-sidebar-address",
+		'description'   => 'Виджет в котором размещается адрес',
+		'before_widget' => '<div class="widget">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h5 class="widgetheading">',
+		'after_title'   => '</h5>',
+
+	) );
+
+
 }
+
 add_action( 'widgets_init', 'moderna_widgets_init' );
+
+
+
+
 
 /**
  * Enqueue scripts and styles.
