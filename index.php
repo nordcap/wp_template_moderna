@@ -12,10 +12,7 @@
  * @package moderna
  */
 
-get_header(); ?>
-
-<h1>index.php</h1>
-<?php
+get_header();
 if (have_posts()) :
 
     if (is_home() && is_front_page()):
@@ -28,9 +25,7 @@ else :
     get_template_part('template-parts/headline');
     get_template_part('template-parts/content', 'none');
 
-endif; ?>
+endif;
 
-
-<?php
 //get_sidebar();
 get_footer();
