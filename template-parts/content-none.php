@@ -8,6 +8,7 @@
  */
 
 ?>
+<h1>Content-none</h1>
 <!--TODO: окультурить страницу, перевести-->
 <section class="no-results not-found">
 	<header class="page-header">

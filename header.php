@@ -51,7 +51,7 @@
                         <li class="active"><a href="index.html">Home</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown"
-                               data-delay="0" data-close-others="false">Features <b class=" icon-angle-down"></b></a>
+                               data-delay="0" data-close-others="false">Features <b class="icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="typography.html">Typography</a></li>
                                 <li><a href="components.html">Components</a></li>
@@ -64,7 +64,7 @@
                     </ul>
                     <br><br>
                     <?php
-                    wp_nav_menu(
+                    $menu = wp_nav_menu(
                         array(
                             'theme_location' => 'primary_menu', //Идентификатор расположение меню в шаблоне.
                             'menu' => '',//Меню которое нужно вывести. Соответствие: id, слаг или название меню.
@@ -73,7 +73,7 @@
                             'container_id' => '',//Значение атрибута id у контейнера меню.
                             'menu_class' => 'nav navbar-nav',//Значение атрибута class у тега ul.
                             'menu_id' => '',//Значение атрибута id у тега ul.
-                            'echo' => true, //Выводить на экран (true) или возвратить для обработки (false).
+                            'echo' => false, //Выводить на экран (true) или возвратить для обработки (false).
                             'fallback_cb' => '__return_empty_string',//Функция для обработки вывода, если никакое меню не найдено.
                             'before' => '',//Текст перед тегом <a> в меню.
                             'after' => '',//Текст после каждого тега </a> в меню.
@@ -83,6 +83,9 @@
                             'depth' => 0,//Сколько уровень вложенных друг в друга ссылок показывать. 0 - все уровни.
                             'walker' => '',//Объект, который будет использоваться для построения меню. (нужно указывать объект, а не строку)
                         ));
+
+                    $menu = str_replace('class="sub-menu"', 'class="dropdown-menu"', $menu);
+                    echo $menu;
                     ?>
 
 
