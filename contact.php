@@ -28,7 +28,7 @@ get_header(); ?>
             <div class="row">
                 <div class="col-lg-12">
                     <h4><?php esc_html_e('Get in touch with us by filling contact form below','moderna')?></strong></h4>
-                    <form id="contactform" action="contact/contact.php" method="post" class="validateform" name="send-contact">
+                    <form id="contactform" action="<?php echo get_template_directory_uri()?>/contact/contact.php" method="post" class="validateform" name="send-contact">
                         <div id="sendmessage">
                             <?php esc_html_e('Your message has been sent. Thank you!','moderna');?>
                         </div>
