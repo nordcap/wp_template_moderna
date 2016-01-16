@@ -330,6 +330,14 @@ function route($template)
     }
 
 
+
+    if (is_page('blog')) {
+        if ($new_template = locate_template(array('blog.php'))) {
+            return $new_template;
+        }
+    }
+
+
     return $template;
 }
 

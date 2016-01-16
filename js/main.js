@@ -12,4 +12,5 @@ jQuery(document).ready(function ($) {
             "data-close-others": "false"
         });
 
+
 });

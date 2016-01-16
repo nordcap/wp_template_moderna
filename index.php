@@ -14,7 +14,7 @@
 
 get_header(); ?>
 
-
+<h1>index.php</h1>
 <?php
 if (have_posts()) :
 
@@ -25,7 +25,7 @@ if (have_posts()) :
 
 
 else :
-
+    get_template_part('template-parts/headline');
     get_template_part('template-parts/content', 'none');
 
 endif; ?>
