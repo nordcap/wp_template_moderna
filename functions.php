@@ -45,7 +45,7 @@ function moderna_setup() {
 	// This theme uses wp_nav_menu() in one location.
 //	TODO: доработать меню, включить больше опций
 	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary', 'moderna' ),
+		'primary_menu' => esc_html__( 'Primary', 'moderna' ),
 	) );
 
 	/*
@@ -314,6 +314,21 @@ function moderna_widgets_init() {
 add_action( 'widgets_init', 'moderna_widgets_init' );
 
 
+/**
+ * Роутинг
+ */
+function route($template)
+{
+	if (is_page('contact')) {
+		if ($new_template = locate_template(array('contact.php'))) {
+			return $new_template;
+		}
+	}
+
+
+	return $template;
+}
+add_filter('template_include', 'route');
 
 
 
