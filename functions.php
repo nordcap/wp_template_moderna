@@ -66,11 +66,12 @@ if (!function_exists('moderna_setup')) :
          * See https://developer.wordpress.org/themes/functionality/post-formats/
          */
         add_theme_support('post-formats', array(
-            'aside',
             'image',
+            'gallery',
             'video',
             'quote',
-            'link',
+
+
         ));
 
         // Set up the WordPress core custom background feature.
@@ -331,11 +332,6 @@ function route($template)
 
 
 
-    if (is_page('blog')) {
-        if ($new_template = locate_template(array('blog.php'))) {
-            return $new_template;
-        }
-    }
 
 
     return $template;

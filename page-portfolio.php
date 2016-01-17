@@ -13,10 +13,11 @@ get_template_part('template-parts/headline'); ?>
         <div class="row">
             <div class="col-lg-12">
                 <ul class="portfolio-categ filter">
-                    <li class="all active"><a href="#" title=""><?php esc_html_e('All','moderna')?></a></li>
-                    <li class="web"><a href="#" title=""><?php esc_html_e('Web design','moderna')?></a></li>
-                    <li class="icon"><a href="#" title=""><?php esc_html_e('Icons','moderna')?></a></li>
-                    <li class="graphic"><a href="#" title=""><?php esc_html_e('Graphic design','moderna')?></a></li>
+                    <!--                    TODO: Непонятно как отображать меню. Через регистрацию и вывод стандартного меню или как-то собирать из БД-->
+                    <li class="all active"><a href="#" title=""><?php esc_html_e('All', 'moderna') ?></a></li>
+                    <li class="web"><a href="#" title=""><?php esc_html_e('Web design', 'moderna') ?></a></li>
+                    <li class="icon"><a href="#" title=""><?php esc_html_e('Icons', 'moderna') ?></a></li>
+                    <li class="graphic"><a href="#" title=""><?php esc_html_e('Graphic design', 'moderna') ?></a></li>
                 </ul>
                 <div class="clearfix">
                 </div>
@@ -60,5 +61,4 @@ get_template_part('template-parts/headline'); ?>
 </section>
 
 
-
-                            <?php get_footer(); ?>
+<?php get_footer(); ?>
