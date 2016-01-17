@@ -12,5 +12,10 @@ jQuery(document).ready(function ($) {
             "data-close-others": "false"
         });
 
+    //изменение визуального оформления пагинации
+    var nav = $('.wp-pagenavi');
+    nav.attr('id','pagination');
+    nav.find('span.pages').removeClass('pages').addClass('all');
+    nav.find('a').addClass('inactive');
 
 });
