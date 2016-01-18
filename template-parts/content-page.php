@@ -29,9 +29,7 @@ if ($format === 'gallery') {
     </div>
 
     <?php if ($format != "quote"):?>
-    <p>
         <?php the_excerpt();?>
-    </p>
     <?php endif;?>
 
     <div class="bottom-article">

@@ -25,7 +25,7 @@
 
 			</div>
 			<div class="col-lg-3">
-				<?php get_sidebar('latestpages')?>
+				<?php get_sidebar('latestposts')?>
 
 			</div>
 			<div class="col-lg-3">

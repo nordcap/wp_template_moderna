@@ -43,6 +43,7 @@ if (!function_exists('moderna_setup')) :
          */
         add_theme_support('post-thumbnails');
 
+
         // This theme uses wp_nav_menu() in one location.
 //	TODO: доработать меню, включить больше опций
         register_nav_menus(array(
@@ -97,6 +98,22 @@ function moderna_content_width()
 }
 
 add_action('after_setup_theme', 'moderna_content_width', 0);
+
+
+
+
+/**
+* Сделаем миниатюру ссылкой на пост
+ */
+function my_post_image_html($html, $post_id, $post_image_id )
+{
+
+    $html = '<a href="' . get_permalink( $post_id ) . '" title="' . esc_attr( get_post_field( 'post_title', $post_id ) ) . '">' . $html . '</a>';
+    return $html;
+
+}
+add_filter('post_thumbnail_html', 'my_post_image_html', 10, 3);
+
 
 
 /**
@@ -269,6 +286,15 @@ function moderna_widgets_init()
         'after_title' => '</h5>',
     ));
 
+    register_sidebar(array(
+        'name' => esc_html__('Sidebar Latest', 'moderna'),
+        'id' => 'right-sidebar-latest',
+        'description' => 'В пустом виджете размещаются последние посты с миниатюрами',
+        'before_widget' => '<div class="widget">',
+        'after_widget' => '</div>',
+        'before_title' => '<h5 class="widgetheading">',
+        'after_title' => '</h5>',
+    ));
 
 //	TODO: обнаружен любопытный баг. Если id виджета будет вида "Название-Буква" то виджет обнуляется при перезагрузке страницы.
     register_sidebar(array(
@@ -294,7 +320,7 @@ function moderna_widgets_init()
     ));
 
     register_sidebar(array(
-        'name' => esc_html__('Sidebar LatestPages', 'moderna'),
+        'name' => esc_html__('Sidebar Latest Posts', 'moderna'),
         'id' => "footer-sidebar-latest",
         'description' => 'В пустом виджете по умолчанию размещаются последние посты.',
         'before_widget' => '<div class="widget">',
