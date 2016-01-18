@@ -16,7 +16,7 @@ if (!is_active_sidebar('sidebar-categories')):?>
 
             $categories = get_categories($args);
             foreach ($categories as $category):?>
-                <!--            TODO: Категория ссылается на страницу категорий (archive.php), для нее нужно сделать дизайн.-->
+                <!-- TODO: Категория ссылается на страницу категорий (archive.php), для нее нужно сделать дизайн.-->
                 <li><i class="icon-angle-right"></i><a
                         href="<?php echo get_category_link($category->term_id) ?>"><?php echo $category->name; ?></a><span>&nbsp;(<?php echo($category->count); ?>
                         )</span></li>
