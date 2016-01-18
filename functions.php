@@ -100,20 +100,23 @@ function moderna_content_width()
 add_action('after_setup_theme', 'moderna_content_width', 0);
 
 
-
-
 /**
-* Сделаем миниатюру ссылкой на пост
+ * Сделаем миниатюру ссылкой на пост
  */
-function my_post_image_html($html, $post_id, $post_image_id )
+function my_post_image_html($html, $post_id, $post_image_id)
 {
 
-    $html = '<a href="' . get_permalink( $post_id ) . '" title="' . esc_attr( get_post_field( 'post_title', $post_id ) ) . '">' . $html . '</a>';
+    //Если миниатюра принадлежит типу поста "слайдер", то картинку не обрамляем
+    if (get_post_type($post_id) == 'slider') {
+        return $html;
+    }
+
+    $html = '<a href="' . get_permalink($post_id) . '" title="' . esc_attr(get_post_field('post_title', $post_id)) . '">' . $html . '</a>';
     return $html;
 
 }
-add_filter('post_thumbnail_html', 'my_post_image_html', 10, 3);
 
+add_filter('post_thumbnail_html', 'my_post_image_html', 10, 3);
 
 
 /**
@@ -260,6 +263,53 @@ add_action('init', 'new_type_contacts');
 
 
 /**
+ * Регистрация нового типа - слайдера
+ */
+function new_type_slider()
+{
+    $args = array(
+        //'label'  => null,
+        'labels' => array(
+            'name' => 'Слайдер', // основное название для типа записи
+            'singular_name' => 'Слайд', // название для одной записи этого типа
+            'all_items' => 'Все слайды', //названия для всех записей этого вида
+            'add_new' => 'Добавить слайд', // для добавления новой записи
+            'add_new_item' => 'Добавить новый слайд', // заголовка у вновь создаваемой записи в админ-панели.
+            'edit_item' => 'Редактировать слайд', // для редактирования типа записи
+            'new_item' => 'Новый слайд', // текст новой записи
+            'view_item' => 'Просмотр слайда', // для просмотра записи этого типа.
+            'search_items' => 'Искать слайд', // для поиска по этим типам записи
+            'not_found' => 'Слайдов не найдено', // если в результате поиска ничего не было найдено
+            'not_found_in_trash' => '', // если не было найдено в корзине
+            'parent_item_colon' => '', // для родительских типов. для древовидных типов
+            'menu_name' => 'Слайды', // название меню
+        ),
+        'description' => 'Слайды на главной',
+        'public' => true,
+        'publicly_queryable' => null,
+        'exclude_from_search' => null,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'menu_position' => 7,
+        'menu_icon' => 'dashicons-images-alt2',
+        //'capability_type'   => 'post',
+        //'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+        //'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+        'hierarchical' => false,
+        'supports' => array('title', 'excerpt', 'thumbnail'),
+        'taxonomies' => array(),
+        'has_archive' => false,
+        'rewrite' => true,
+        'query_var' => true,
+        'show_in_nav_menus' => true,
+    );
+    register_post_type('slider', $args);
+}
+
+add_action('init', 'new_type_slider');
+
+
+/**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
@@ -376,9 +426,6 @@ function route($template)
             return $new_template;
         }
     }
-
-
-
 
 
     return $template;

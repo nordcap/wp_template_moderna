@@ -12,45 +12,31 @@
                 <!-- Slider -->
                 <div id="main-slider" class="flexslider">
                     <ul class="slides">
-                        <li>
-                            <img src="<?php echo get_template_directory_uri() ?>/img/slides/1.jpg" alt=""/>
+                        <?php
+                        $query = new WP_Query(array('post_type' => 'slider'));
+                        if ($query->have_posts()) :
+                            while ($query->have_posts()) : $query->the_post(); ?>
 
-                            <div class="flex-caption">
-                                <h3>Modern Design</h3>
+                                <li>
+                                    <?php the_post_thumbnail('full', array('alt' => trim(strip_tags($wp_postmeta->_wp_attachment_image_alt)))); ?>
 
-                                <p>Duis fermentum auctor ligula ac malesuada. Mauris et metus odio, in pulvinar urna</p>
-                                <a href="#" class="btn btn-theme">Learn More</a>
-                            </div>
-                        </li>
-                        <li>
-                            <img src="<?php echo get_template_directory_uri() ?>/img/slides/2.jpg" alt=""/>
+                                    <div class="flex-caption">
+                                        <h3><?php the_title(); ?></h3>
 
-                            <div class="flex-caption">
-                                <h3>Fully Responsive</h3>
+                                        <?php the_excerpt(); ?>
+                                        <a href="#"
+                                           class="btn btn-theme"><?php esc_html_e('Learn More', 'moderna') ?></a>
+                                    </div>
+                                </li>
 
-                                <p>Sodales neque vitae justo sollicitudin aliquet sit amet diam curabitur sed
-                                    fermentum.</p>
-                                <a href="#" class="btn btn-theme">Learn More</a>
-                            </div>
-                        </li>
-                        <li>
-                            <img src="<?php echo get_template_directory_uri() ?>/img/slides/3.jpg" alt=""/>
-
-                            <div class="flex-caption">
-                                <h3>Clean & Fast</h3>
-
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit donec mer lacinia.</p>
-                                <a href="#" class="btn btn-theme">Learn More</a>
-                            </div>
-                        </li>
+                            <? endwhile; endif;
+                        wp_reset_postdata(); ?>
                     </ul>
                 </div>
                 <!-- end slider -->
             </div>
         </div>
     </div>
-
-
 </section>
 <section class="callaction">
     <div class="container">
@@ -58,8 +44,10 @@
             <div class="col-lg-12">
                 <div class="big-cta">
                     <div class="cta-text">
-<!--                        <h2><span>Moderna</span>HTML Business Template</h2>-->
-                        <h2><span><?php esc_html_e('Moderna', 'moderna'); ?></span> <?php esc_html_e(' HTML Business Template','moderna');?></h2>
+                        <!--                        <h2><span>Moderna</span>HTML Business Template</h2>-->
+                        <h2>
+                            <span><?php esc_html_e('Moderna', 'moderna'); ?></span> <?php esc_html_e(' HTML Business Template', 'moderna'); ?>
+                        </h2>
                     </div>
                 </div>
             </div>
@@ -75,7 +63,7 @@
 
                     <?php
 
-                    $query = new WP_Query(array('post_type' => 'post_plus', 'order'=>'ASC'));
+                    $query = new WP_Query(array('post_type' => 'post_plus', 'order' => 'ASC'));
                     if ($query->have_posts()) :
                         while ($query->have_posts()) : $query->the_post(); ?>
 
@@ -124,7 +112,7 @@
 
 
                             <?php
-                            $query = new WP_Query(array('post_type' => 'post_portfolio',  'posts_per_page'=>4));
+                            $query = new WP_Query(array('post_type' => 'post_portfolio', 'posts_per_page' => 4));
                             if ($query->have_posts()) :
                                 while ($query->have_posts()) : $query->the_post(); ?>
                                     <!-- TODO: Ошибка! При изменении ACF полей (id у select), данные связанные с ними не обновляются. -->
