@@ -252,12 +252,24 @@ function moderna_widgets_init()
     register_sidebar(array(
         'name' => esc_html__('Sidebar Search', 'moderna'),
         'id' => 'sidebar-search',
-        'description' => 'Виджет в котором размещается поиск по сайту',
+        'description' => 'В пустом виджете размещается поиск по сайту',
         'before_widget' => '<div class="widget">',
         'after_widget' => '</div>',
         'before_title' => '',
         'after_title' => '',
     ));
+
+    register_sidebar(array(
+        'name' => esc_html__('Sidebar Categories', 'moderna'),
+        'id' => 'sidebar-categories',
+        'description' => 'В пустом виджете размещается список категорий',
+        'before_widget' => '<div class="widget">',
+        'after_widget' => '</div>',
+        'before_title' => '<h5 class="widgetheading">',
+        'after_title' => '</h5>',
+    ));
+
+
 //	TODO: обнаружен любопытный баг. Если id виджета будет вида "Название-Буква" то виджет обнуляется при перезагрузке страницы.
     register_sidebar(array(
         'name' => esc_html__('Sidebar Address', 'moderna'),

@@ -44,21 +44,11 @@ get_template_part('template-parts/headline'); ?>
                     <?php //get_sidebar(); ?>
 
                     <aside class="right-sidebar">
-                        <div class="widget">
-                            <?php get_sidebar('search');?>
-                        </div>
-                        <div class="widget">
-                            <h5 class="widgetheading">Categories</h5>
-                            <ul class="cat">
-                                <li><i class="icon-angle-right"></i><a href="#">Web design</a><span> (20)</span></li>
-                                <li><i class="icon-angle-right"></i><a href="#">Online business</a><span> (11)</span>
-                                </li>
-                                <li><i class="icon-angle-right"></i><a href="#">Marketing strategy</a><span> (9)</span>
-                                </li>
-                                <li><i class="icon-angle-right"></i><a href="#">Technology</a><span> (12)</span></li>
-                                <li><i class="icon-angle-right"></i><a href="#">About finance</a><span> (18)</span></li>
-                            </ul>
-                        </div>
+
+                        <?php get_sidebar('search'); ?>
+                        <?php get_sidebar('categories'); ?>
+
+
                         <div class="widget">
                             <h5 class="widgetheading">Latest posts</h5>
                             <ul class="recent">
