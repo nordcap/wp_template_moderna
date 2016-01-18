@@ -10,13 +10,13 @@
 ?>
 
 <?php $format = get_post_format();
+
 if ($format === false || $format === 'image') {
     $format = "image";
 }
 if ($format === 'gallery') {
     $format = "slider";
 }
-
 
 ?>
 
