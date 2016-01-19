@@ -45,7 +45,6 @@ if (!function_exists('moderna_setup')) :
 
 
         // This theme uses wp_nav_menu() in one location.
-//	TODO: доработать меню, включить больше опций
         register_nav_menus(array(
             'primary_menu' => esc_html__('Primary', 'moderna'),
         ));
@@ -91,7 +90,7 @@ add_action('after_setup_theme', 'moderna_setup');
  *
  * @global int $content_width
  */
-//TODO: непонятно откуда задаются размеры контента
+
 function moderna_content_width()
 {
     $GLOBALS['content_width'] = apply_filters('moderna_content_width', 640);
@@ -355,7 +354,7 @@ function moderna_widgets_init()
         'before_title' => '<h5 class="widgetheading">',
         'after_title' => '</h5>',
     ));
-//	TODO: обнаружен любопытный баг. Если id виджета будет вида "Название-Буква" то виджет обнуляется при перезагрузке страницы.
+
     register_sidebar(array(
         'name' => esc_html__('Sidebar Address', 'moderna'),
         'id' => "footer-sidebar-address",

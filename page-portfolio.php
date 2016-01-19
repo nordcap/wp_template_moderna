@@ -12,13 +12,30 @@ get_template_part('template-parts/headline'); ?>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+
+
+                <?php
+                $query = new WP_Query(array('post_type' => 'post_portfolio', 'posts_per_page' => 1));
+                if ($query->have_posts()) :
+                    while ($query->have_posts()) : $query->the_post(); ?>
+
+                        <?php $listWork = get_field_object('data-type'); ?>
+                        <?php ?>
+
+                    <? endwhile; endif;
+                wp_reset_postdata(); ?>
+
+
                 <ul class="portfolio-categ filter">
-                    <!--                    TODO: Непонятно как отображать меню. Через регистрацию и вывод стандартного меню или как-то собирать из БД-->
                     <li class="all active"><a href="#" title=""><?php esc_html_e('All', 'moderna') ?></a></li>
-                    <li class="web"><a href="#" title=""><?php esc_html_e('Web design', 'moderna') ?></a></li>
-                    <li class="icon"><a href="#" title=""><?php esc_html_e('Icons', 'moderna') ?></a></li>
-                    <li class="graphic"><a href="#" title=""><?php esc_html_e('Graphic design', 'moderna') ?></a></li>
+                    <?php foreach ($listWork['choices'] as $keyWork => $nameWork): ?>
+                        <li class="<?php echo $keyWork ?>">
+                            <a href="#" title=""><?php esc_html_e($nameWork, 'moderna') ?></a>
+                        </li>
+                    <?php endforeach; ?>
                 </ul>
+
+
                 <div class="clearfix">
                 </div>
                 <div class="row">
