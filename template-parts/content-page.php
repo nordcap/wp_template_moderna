@@ -28,18 +28,14 @@ if ($format === 'gallery') {
         <?php get_template_part('template-parts/format', $format); ?>
     </div>
 
-    <?php if ($format != "quote"):?>
-        <?php the_excerpt();?>
-    <?php endif;?>
+    <?php if ($format != "quote"): ?>
+        <?php the_excerpt(); ?>
+    <?php endif; ?>
 
     <div class="bottom-article">
         <ul class="meta-post">
-            <?php moderna_date_author();?>
-            <?php moderna_tag_comment();?>
-
-            <!--            TODO: Непонятно что имеется ввиду под blog - это метка или что?-->
-<!--            <li><i class="icon-folder-open"></i><a href="#"> Blog</a></li>-->
-            <li><i class="icon-comments"></i><a href="#"><?php comments_number(); ?></a></li>
+            <?php moderna_date_author(); ?>
+            <?php moderna_tag_comment(); ?>
         </ul>
         <a href="<?php the_permalink(); ?>" class="pull-right"><?php esc_html_e('Continue reading', 'moderna') ?><i
                 class="icon-angle-right"></i></a>

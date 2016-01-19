@@ -51,27 +51,28 @@ if (!function_exists('moderna_tag_comment')) :
                         }*/
 
             /* translators: used between list items, there is a space after the comma */
-            $tags_list = get_the_tag_list('','<div style="float: left;">,&nbsp;</div>');
+            $tags_list = get_the_tag_list('', '<div style="float: left;">,&nbsp;</div>');
 
-                printf('<li><i class="icon-folder-open"></i>' . esc_html__('%1$s', 'moderna') . '</li>', $tags_list); // WPCS: XSS OK.
-            }
+            printf('<li><i class="icon-folder-open"></i>' . esc_html__('%1$s', 'moderna') . '</li>', $tags_list); // WPCS: XSS OK.
+        }
 
 
-        /*        if (!is_single() && !post_password_required() && (comments_open() || get_comments_number())) {
-                    echo '<span class="comments-link">';
-                    comments_popup_link(esc_html__('Leave a comment', 'moderna'), esc_html__('1 Comment', 'moderna'), esc_html__('% Comments', 'moderna'));
-                    echo '</span>';
-                }
+        if (!is_single() && !post_password_required() && (comments_open() || get_comments_number())) {
 
-                edit_post_link(
-                    sprintf(
-                    // translators: %s: Name of current post
-                        esc_html__('Edit %s', 'moderna'),
-                        the_title('<span class="screen-reader-text">"', '"</span>', false)
-                    ),
-                    '<span class="edit-link">',
-                    '</span>'
-                );*/
+            echo '<li><i class="icon-comments"></i>';
+            comments_popup_link(esc_html__('No comments', 'moderna'), esc_html__('1 Comment', 'moderna'), esc_html__('% Comments', 'moderna'));
+            echo '</li>';
+        }
+        /*
+                     edit_post_link(
+                         sprintf(
+                         // translators: %s: Name of current post
+                             esc_html__('Edit %s', 'moderna'),
+                             the_title('<span class="screen-reader-text">"', '"</span>', false)
+                         ),
+                         '<span class="edit-link">',
+                         '</span>'
+                     );*/
     }
 endif;
 
