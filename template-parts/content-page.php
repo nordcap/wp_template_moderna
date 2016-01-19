@@ -34,8 +34,8 @@ if ($format === 'gallery') {
 
     <div class="bottom-article">
         <ul class="meta-post">
-            <li><i class="icon-calendar"></i><a href="#"><?php the_time('j F Y'); ?></a></li>
-            <li><i class="icon-user"></i><a href="#"><?php the_author(); ?></a></li>
+            <?php moderna_posted_on();?>
+
             <!--            TODO: Непонятно что имеется ввиду под blog - это метка или что?-->
             <li><i class="icon-folder-open"></i><a href="#"> Blog</a></li>
             <li><i class="icon-comments"></i><a href="#"><?php comments_number(); ?></a></li>

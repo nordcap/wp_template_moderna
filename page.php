@@ -41,10 +41,7 @@ get_template_part('template-parts/headline'); ?>
 
                 </div>
                 <div class="col-lg-4">
-                    <?php //get_sidebar(); ?>
-
                     <aside class="right-sidebar">
-
                         <?php get_sidebar('search'); ?>
                         <?php get_sidebar('categories'); ?>
                         <?php get_sidebar('latestthumb'); ?>

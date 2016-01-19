@@ -60,9 +60,7 @@
             <div class="col-lg-12">
                 <div class="row">
 
-
                     <?php
-
                     $query = new WP_Query(array('post_type' => 'post_plus', 'order' => 'ASC'));
                     if ($query->have_posts()) :
                         while ($query->have_posts()) : $query->the_post(); ?>
@@ -82,7 +80,6 @@
 
                                     </div>
                                     <div class="box-bottom">
-                                        <!-- TODO: очевидно что ссылка будет вести на другую страницу или всплывающее окно. Но конкретно сказать трудно.-->
                                         <a href="<?php echo esc_url(home_url('/')); ?>"><?php esc_html_e('Learn more', 'moderna') ?></a>
                                     </div>
                                 </div>
@@ -115,16 +112,14 @@
                             $query = new WP_Query(array('post_type' => 'post_portfolio', 'posts_per_page' => 4));
                             if ($query->have_posts()) :
                                 while ($query->have_posts()) : $query->the_post(); ?>
-                                    <!-- TODO: Ошибка! При изменении ACF полей (id у select), данные связанные с ними не обновляются. -->
                                     <li class=" item-thumbs col-lg-3 <?php the_field('class_list'); ?>"
                                         data-id="<?php the_field('data-id'); ?>"
                                         data-type="<?php the_field('data-type'); ?>">
 
                                         <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                                        <!-- TODO: Касательно картинки - the_field('image') идентично the_field('название поля')-->
                                         <a class="hover-wrap fancybox" data-fancybox-group="gallery"
                                            title="<?php the_title(); ?>"
-                                           href="<?php the_field('image'); ?>">
+                                           href="<?php the_field('thumbnail'); ?>">
                                             <span class="overlay-img"></span>
                                             <span class="overlay-img-thumb font-icon-plus"></span>
                                         </a>
