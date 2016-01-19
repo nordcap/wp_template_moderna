@@ -18,4 +18,6 @@ jQuery(document).ready(function ($) {
     nav.find('span.pages').removeClass('pages').addClass('all');
     nav.find('a').addClass('inactive');
 
+
+
 });
