@@ -1976,3 +1976,26 @@ article img.pull-right, article .align-right{
 @media (max-width: 360px) {
 
 }
+/*навигация*/
+
+nav.navigation .nav-links{
+	display: flex;
+	justify-content: space-between;
+}
+
+nav.navigation .nav-links span{
+	display: block;
+
+}
+nav.navigation h2.screen-reader-text{
+	visibility: hidden;
+}
+
+.nav-links>.nav-previous .screen-reader-text{
+	color: rgb(101,101,101);
+	float: left;
+}
+.nav-links>.nav-next .screen-reader-text{
+	color: rgb(101,101,101);
+	float: right;
+}
