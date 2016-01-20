@@ -1983,19 +1983,26 @@ nav.navigation .nav-links{
 	justify-content: space-between;
 }
 
-nav.navigation .nav-links span{
-	display: block;
-
+nav.navigation .nav-links a{
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: column;
+	color: rgb(101,101,101);
 }
 nav.navigation h2.screen-reader-text{
 	visibility: hidden;
 }
 
 .nav-links>.nav-previous .screen-reader-text{
-	color: rgb(101,101,101);
-	float: left;
+
+	text-align: left;
+
 }
 .nav-links>.nav-next .screen-reader-text{
-	color: rgb(101,101,101);
-	float: right;
+
+	text-align: right;
+
 }

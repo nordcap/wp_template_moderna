@@ -9,7 +9,7 @@
  *
  * @package moderna
  */
-
+//TODO:в связи с отсутствием дизайна блока комментариев у исходного шаблона Moderna, исправление верстки данного файла не предусмотрено
 /*
  * If the current post is protected by a password and
  * the visitor has not yet entered the password we will

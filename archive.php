@@ -7,45 +7,57 @@
  * @package moderna
  */
 
-get_header(); ?>
-<h1>archive.php</h1>
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+get_header();
+get_template_part('template-parts/headline');
 
-		<?php
-		if ( have_posts() ) : ?>
+?>
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
 
-			<header class="page-header">
-				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-					the_archive_description( '<div class="taxonomy-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
+                    <?php
+                    the_archive_title('<h2>', '</h2><hr/>');
+                    the_archive_description('<div>', '</div>');
+                    if (have_posts()) : ?>
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
+                        <?php
+                        /* Start the Loop */
+                        while (have_posts()) : the_post();
 
-			endwhile;
+                            /*
+                             * Include the Post-Format-specific template for the content.
+                             * If you want to override this in a child theme, then include a file
+                             * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+                             */
 
-			the_posts_navigation();
+                            get_template_part('template-parts/content', 'page');
 
-		else :
+                        endwhile;
 
-			get_template_part( 'template-parts/content', 'none' );
+                        if (function_exists('wp_pagenavi')) :
+                            wp_pagenavi();
+                        endif;
 
-		endif; ?>
+                    else :
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+                        get_template_part('template-parts/content', 'none');
+
+                    endif; ?>
+
+                </div>
+                <div class="col-lg-4">
+                    <aside class="right-sidebar">
+                        <?php get_sidebar('search'); ?>
+                        <?php get_sidebar('categories'); ?>
+                        <?php get_sidebar('latestthumb'); ?>
+                        <?php get_sidebar('tags'); ?>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
 
 <?php
-get_sidebar();
 get_footer();

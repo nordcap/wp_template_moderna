@@ -6,7 +6,7 @@
  *
  * @package moderna
  */
-
+//TODO:окультурить 404 ошибку
 get_header(); ?>
 <h1>404</h1>
 	<div id="primary" class="content-area">

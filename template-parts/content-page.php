@@ -20,7 +20,7 @@ if ($format === 'gallery') {
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article>
     <div class="post-<?php echo $format ?>">
         <div class="post-heading">
             <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>

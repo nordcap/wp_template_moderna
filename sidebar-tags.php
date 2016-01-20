@@ -14,7 +14,6 @@ if (!is_active_sidebar('sidebar-tags')):?>
 
             foreach ($tags as $tag):
                 $tag_link = get_tag_link($tag->term_id); ?>
-                <!-- TODO: Категория ссылается на страницу категорий (archive.php), для нее нужно сделать дизайн.-->
                 <li><a href="<?php echo $tag_link; ?>"><?php echo $tag->name; ?></a></li>
             <?php endforeach;
 
