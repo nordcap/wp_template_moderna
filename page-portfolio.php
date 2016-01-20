@@ -46,13 +46,11 @@ get_template_part('template-parts/headline'); ?>
                             $query = new WP_Query(array('post_type' => 'post_portfolio'));
                             if ($query->have_posts()) :
                                 while ($query->have_posts()) : $query->the_post(); ?>
-                                    <!-- TODO: Ошибка! При изменении ACF полей (id у select), данные связанные с ними не обновляются. -->
                                     <li class=" item-thumbs col-lg-3 <?php the_field('class_list'); ?>"
                                         data-id="<?php the_field('data-id'); ?>"
                                         data-type="<?php the_field('data-type'); ?>">
 
                                         <!-- Fancybox - Gallery Enabled - Title - Full Image -->
-                                        <!-- TODO: Касательно картинки - the_field('image') идентично the_field('название поля')-->
                                         <a class="hover-wrap fancybox" data-fancybox-group="gallery"
                                            title="<?php the_title(); ?>"
                                            href="<?php the_field('image'); ?>">

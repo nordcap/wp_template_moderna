@@ -18,7 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content=""/>
     <meta name="author" content="http://bootstraptaste.com"/>
-    <!--TODO: определить зачем нужны 2 следующие конструкции-->
+
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
@@ -41,8 +41,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <!--					TODO: Первую букву названия сайта Moderna необходимо обернуть в <span>	-->
-                    <a class="navbar-brand" href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
+                    <a class="navbar-brand" href="<?php echo esc_url(home_url('/')); ?>">
+                        <?php
+                        $nameBlog = get_bloginfo('name');
+                        echo substr_replace($nameBlog, '<span>' . substr($nameBlog, 0, 1) . '</span>', 0, 1);
+                        ?></a>
                 </div>
                 <div class="navbar-collapse collapse ">
                     <?php
