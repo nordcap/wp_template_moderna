@@ -8,7 +8,6 @@
  *
  * @package moderna
  */
-
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -17,9 +16,9 @@
     <title>Moderna - Bootstrap 3 flat corporate template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content=""/>
-    <meta name="author" content="http://bootstraptaste.com"/>
+    <meta name="author" content="http://alebu.ru"/>
 
-    <link rel="profile" href="http://gmpg.org/xfn/11">
+
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
 
