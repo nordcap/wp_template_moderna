@@ -7,44 +7,52 @@
  * @package moderna
  */
 
-get_header(); ?>
+get_header();
+get_template_part('template-parts/headline'); ?>
 
 
-	<h1>search.php</h1>
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <?php
+                    if (have_posts()) :
+                         printf(esc_html__('Search Results for: %s', 'moderna'), '<span>' . get_search_query() . '</span>');
 
-		<?php
-		if ( have_posts() ) : ?>
+                        /* Start the Loop */
+                        while (have_posts()) : the_post();
+                            /**
+                             * Run the loop for the search to output the results.
+                             * If you want to overload this in a child theme then include a file
+                             * called content-search.php and that will be used instead.
+                             */
 
-			<header class="page-header">
-				<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'moderna' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-			</header><!-- .page-header -->
+                            get_template_part('template-parts/content', 'page');
+                        endwhile;
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+                        if (function_exists('wp_pagenavi')) :
+                            wp_pagenavi();
+                        endif;
+                    else:
 
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'search' );
+                        get_template_part('template-parts/content', 'none');
 
-			endwhile;
+                    endif; ?>
+                    ?>
 
-			the_posts_navigation();
 
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif; ?>
-
-		</main><!-- #main -->
-	</section><!-- #primary -->
+                </div>
+                <div class="col-lg-4">
+                    <aside class="right-sidebar">
+                        <?php get_sidebar('search'); ?>
+                        <?php get_sidebar('categories'); ?>
+                        <?php get_sidebar('latestthumb'); ?>
+                        <?php get_sidebar('tags'); ?>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
 
 <?php
-
 get_footer();

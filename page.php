@@ -28,17 +28,21 @@ get_template_part('template-parts/headline'); ?>
                         'paged' => $paged));
 
                     if ($query->have_posts()) :
-                        while ($query->have_posts()) : $query->the_post(); ?>
+                        while ($query->have_posts()) : $query->the_post();
 
-                            <?php get_template_part('template-parts/content', 'page'); ?>
-                        <? endwhile; endif; ?>
+                            get_template_part('template-parts/content', 'page');
+                        endwhile;
 
-                    <?php if (function_exists('wp_pagenavi')) {
-                        wp_pagenavi(array('query' => $query));
-                    } ?>
+                        if (function_exists('wp_pagenavi')) {
+                            wp_pagenavi(array('query' => $query));
+                        }
 
-                    <?php wp_reset_postdata(); ?>
+                        wp_reset_postdata();
+                    else:
 
+                        get_template_part('template-parts/content', 'none');
+
+                    endif; ?>
                 </div>
                 <div class="col-lg-4">
                     <aside class="right-sidebar">

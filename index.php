@@ -23,6 +23,7 @@ if (have_posts()) :
 
 else :
     get_template_part('template-parts/headline');
+//    TODO: облагородить content-none.php
     get_template_part('template-parts/content', 'none');
 
 endif;

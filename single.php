@@ -6,7 +6,7 @@
  *
  * @package moderna
  */
-
+//TODO:облагородить страницу поста
 get_header(); ?>
 
 	<div id="primary" class="content-area">
