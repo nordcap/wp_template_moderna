@@ -6,59 +6,30 @@
  *
  * @package moderna
  */
-//TODO:окультурить 404 ошибку
-get_header(); ?>
-<h1>404</h1>
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
 
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'moderna' ); ?></h1>
-				</header><!-- .page-header -->
+get_header();
+get_template_part('template-parts/headline'); ?>
 
-				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'moderna' ); ?></p>
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1><?php esc_html_e('Oops! That page can&rsquo;t be found.', 'moderna'); ?></h1>
 
-					<?php
-						get_search_form();
-
-						the_widget( 'WP_Widget_Recent_Posts' );
-
-						// Only show the widget if site has multiple categories.
-						if ( moderna_categorized_blog() ) :
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'moderna' ); ?></h2>
-						<ul>
-						<?php
-							wp_list_categories( array(
-								'orderby'    => 'count',
-								'order'      => 'DESC',
-								'show_count' => 1,
-								'title_li'   => '',
-								'number'     => 10,
-							) );
-						?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-						endif;
-
-						/* translators: %1$s: smiley */
-						$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'moderna' ), convert_smilies( ':)' ) ) . '</p>';
-						the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
-
-						the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-				</div><!-- .page-content -->
-			</section><!-- .error-404 -->
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
+                    <p><?php esc_html_e('It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'moderna'); ?></p>
+                    <?php get_search_form(); ?>
+                </div>
+                <div class="col-lg-4">
+                    <aside class="right-sidebar">
+                        <?php get_sidebar('search'); ?>
+                        <?php get_sidebar('categories'); ?>
+                        <?php get_sidebar('latestthumb'); ?>
+                        <?php get_sidebar('tags'); ?>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
 
 <?php
 get_footer();
