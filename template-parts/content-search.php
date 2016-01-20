@@ -15,7 +15,7 @@
 
 		<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
-			<?php moderna_posted_on(); ?>
+			<?php moderna_date_author(); ?>
 		</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
@@ -25,6 +25,6 @@
 	</div><!-- .entry-summary -->
 
 	<footer class="entry-footer">
-		<?php moderna_entry_footer(); ?>
+		<?php moderna_tag_comment(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

@@ -6,8 +6,7 @@
 
 if (!is_active_sidebar('sidebar-search')):?>
     <div class="widget">
-        <form class="form-search">
-<!--            TODO:поиск не работает-->
+        <form  method="post" role="search" class="form-search" action="<?php echo esc_url(home_url('/'))?>">
             <input type="search" class="form-control" name="s" placeholder="<?php esc_html_e('Search..', 'moderna') ?>">
         </form>
     </div>
