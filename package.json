@@ -1,0 +1,19 @@
+{
+  "name": "moderna",
+  "version": "0.0.1",
+  "devDependencies": {
+    "del": "*",
+    "gulp": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-concat": "*",
+    "gulp-if": "*",
+    "gulp-minify-css": "*",
+    "gulp-minify-html": "*",
+    "gulp-plumber": "*",
+    "gulp-size": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-uglify": "*",
+    "merge-stream": "*",
+    "run-sequence": "^1.1.5"
+  }
+}

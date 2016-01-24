@@ -463,16 +463,23 @@ add_filter('wp_nav_menu_objects', 'replace_css_menu');
  */
 function moderna_scripts()
 {
-    wp_enqueue_style('bootstrap-style', get_template_directory_uri() . '/css/bootstrap.min.css');
+/*    wp_enqueue_style('bootstrap-style', get_template_directory_uri() . '/css/bootstrap.min.css');
     wp_enqueue_style('fancybox-style', get_template_directory_uri() . '/css/fancybox/jquery.fancybox.css');
     wp_enqueue_style('slider-style', get_template_directory_uri() . '/css/flexslider.css');
     wp_enqueue_style('moderna-style', get_template_directory_uri() . '/css/style.css');
 
     //Theme skin
-    wp_enqueue_style('skins-style', get_template_directory_uri() . '/skins/default.css');
+    wp_enqueue_style('skins-style', get_template_directory_uri() . '/skins/default.css');*/
+
+//в случае подключения традиционным образом, закомментировать 2 строки ниже и раскомментировать предыдущие
+    wp_enqueue_style('vendor-style', get_template_directory_uri() . '/css/vendor.min.css');
+    wp_enqueue_style('main-style', get_template_directory_uri() . '/css/main.min.css');
 
 
-    wp_enqueue_script('jquery', get_template_directory_uri() . '/js/jquery.js', array(), '20150115', true);
+
+
+
+/*    wp_enqueue_script('jquery', get_template_directory_uri() . '/js/jquery.js', array(), '20150115', true);
     wp_enqueue_script('jquery.easing', get_template_directory_uri() . '/js/jquery.easing.1.3.js', array(), '20150115', true);
     wp_enqueue_script('bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '20150115', true);
     wp_enqueue_script('fancybox.pack', get_template_directory_uri() . '/js/jquery.fancybox.pack.js', array(), '20150115', true);
@@ -483,8 +490,11 @@ function moderna_scripts()
     wp_enqueue_script('slider', get_template_directory_uri() . '/js/jquery.flexslider.js', array(), '20150115', true);
     wp_enqueue_script('animate', get_template_directory_uri() . '/js/animate.js', array(), '20150115', true);
     wp_enqueue_script('custom', get_template_directory_uri() . '/js/custom.js', array(), '20150115', true);
-    wp_enqueue_script('main', get_template_directory_uri() . '/js/main.js', array(), '20150115', true);
+    wp_enqueue_script('main', get_template_directory_uri() . '/js/main.js', array(), '20150115', true);*/
 
+    //в случае подключения традиционным образом, закомментировать 2 строки ниже и раскомментировать предыдущие
+    wp_enqueue_script('vendor', get_template_directory_uri() . '/js/vendor.min.js', array(), '20150115', true);
+    wp_enqueue_script('main', get_template_directory_uri() . '/js/main.min.js', array(), '20150115', true);
 
     /*if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
         wp_enqueue_script( 'comment-reply' );
